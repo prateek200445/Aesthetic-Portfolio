@@ -39,3 +39,11 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# local/private assets
+creme_espana/
+custom pngs/
+intro video/
+videos/
+Prateek_lachwani.pdf
+prateek_sapidblueai (2).pdf
