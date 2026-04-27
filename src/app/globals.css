@@ -161,7 +161,7 @@ body {
 .fx-bg-overlay { position: absolute; inset: 0; background: var(--fx-overlay); }
 
 .fx-header {
-  grid-column: 1 / 13; align-self: start; padding-top: 5vh;
+  grid-column: 1 / 13; align-self: start; padding-top: clamp(1.5vh, 3vw, 5vh);
   font-size: clamp(0.6rem, 0.9vw, 0.8rem); line-height: 1; text-align: center; color: var(--fx-text);
 }
 .fx-header > * { display: block; }

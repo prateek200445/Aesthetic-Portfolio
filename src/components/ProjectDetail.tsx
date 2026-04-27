@@ -5,7 +5,10 @@ import type { Project } from "@/lib/projectsData";
 import TabcuraScrollVisual from "@/components/TabcuraScrollVisual";
 import HealthcareScrollStory from "@/components/HealthcareScrollStory";
 import ButtonWithIconDemo from "@/components/ui/button-witn-icon";
-import RotatingEarth from "@/components/ui/wireframe-dotted-globe";
+import AiMcpScrollVisual from "@/components/AiMcpScrollVisual";
+import JourneyQuestScrollVisual from "@/components/JourneyQuestScrollVisual";
+import VedaScrollVisual from "@/components/VedaScrollVisual";
+import ArthInventoryScrollVisual from "@/components/ArthInventoryScrollVisual";
 
 export default function ProjectDetail({ project }: { project: Project }) {
   return (
@@ -97,52 +100,35 @@ export default function ProjectDetail({ project }: { project: Project }) {
         </section>
 
         {/* videoSrc lookup — add new slugs here when new project videos are added */}
-        {(() => {
-          const videoMap: Record<string, string> = {
-            "tabcura": "/videos/tabcura-video.mp4",
-            "ai-mcp-orchestrator": "/videos/aimcp.mp4",
-            "arth-inventory": "/videos/ai-inventory.mp4",
-            "journey-quest": "/videos/journey.mp4",
-            "veda-ai": "/videos/vedatec.mp4",
-          };
-          const videoSrc = videoMap[project.slug];
+        {project.slug === "journey-quest" ? (
+          <JourneyQuestScrollVisual />
+        ) : project.slug === "veda-ai" ? (
+          <VedaScrollVisual project={project} />
+        ) : project.slug === "ai-mcp-orchestrator" ? (
+          <AiMcpScrollVisual project={project} />
+        ) : project.slug === "arth-inventory" ? (
+          <ArthInventoryScrollVisual project={project} />
+        ) : (
+          (() => {
+            const videoMap: Record<string, string> = {
+              "tabcura": "/videos/tabcura-video.mp4",
+            };
+            const videoSrc = videoMap[project.slug];
 
-          return (
-            <TabcuraScrollVisual
-              imageSrc={project.image}
-              videoSrc={videoSrc}
-              imageAlt={`${project.title} project visual`}
-              overlayTitle={project.slug === "tabcura" ? "AI Prescription Intelligence" : project.title}
-              overlaySubtitle={project.slug === "tabcura" ? "Reckon 6.0 Showcase" : "Project showcase"}
-              useContainerScroll={!!videoSrc}
-            />
-          );
-        })()}
-
-        {project.slug === "arth-inventory" && (
-          <div className="w-screen relative left-1/2 right-1/2 -mx-[50vw] bg-[#ece9e9] py-10 md:py-14 mt-0">
-            <div className="mx-auto max-w-[1180px] px-4 md:px-6 lg:px-8">
-              <img
-                src="/projects/cart-Photoroom.png"
-                alt="AI Optimizer Cart visual"
-                className="block h-auto w-full object-contain"
+            return (
+              <TabcuraScrollVisual
+                imageSrc={project.image}
+                videoSrc={videoSrc}
+                imageAlt={`${project.title} project visual`}
+                overlayTitle={project.slug === "tabcura" ? "AI Prescription Intelligence" : project.title}
+                overlaySubtitle={project.slug === "tabcura" ? "Reckon 6.0 Showcase" : "Project showcase"}
+                useContainerScroll={!!videoSrc}
               />
-            </div>
-          </div>
+            );
+          })()
         )}
 
         {project.slug === "tabcura" && <HealthcareScrollStory />}
-
-        {project.slug === "ai-mcp-orchestrator" && (
-          <div className="w-screen relative left-1/2 right-1/2 -mx-[50vw] bg-black py-16 md:py-20 mt-0">
-            <div className="mx-auto max-w-[1180px] px-4 md:px-6 lg:px-8 relative">
-              {/* Globe */}
-              <div className="flex w-full justify-center">
-                <RotatingEarth width={1100} height={620} className="overflow-hidden rounded-2xl" />
-              </div>
-            </div>
-          </div>
-        )}
       </div>
 
       <div className="w-full px-4 py-10 md:px-6 md:py-12 lg:px-8">
@@ -169,7 +155,7 @@ export default function ProjectDetail({ project }: { project: Project }) {
             </p>
             {/* Add button below stack details for every project */}
             <div className="mt-2">
-              <ButtonWithIconDemo />
+              <ButtonWithIconDemo href={project.collaborateUrl} />
             </div>
           </div>
         </section>

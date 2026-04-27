@@ -16,6 +16,7 @@ export interface Project {
     label: string;
     url: string;
   }[];
+  collaborateUrl?: string;
   gallery?: string[];
 }
 
@@ -38,7 +39,10 @@ export const projects: Project[] = [
     technologies: ["GitHub Copilot", "MongoDB", "React", "Gemini API", "OCR"],
     roles: ["Creative Developer", "Full Stack Developer"],
     date: "February 2025",
-    links: [],
+    links: [
+      { label: "GitHub Repository", url: "https://github.com/prateek200445/Tabcura_updated" }
+    ],
+    collaborateUrl: "https://github.com/prateek200445/Tabcura_updated",
     gallery: ["/projects/tabcura.png"],
   },
   {
@@ -60,6 +64,7 @@ export const projects: Project[] = [
     roles: ["Full Stack Developer"],
     date: "Coming Soon",
     links: [],
+    collaborateUrl: "/contact",
     gallery: ["/projects/last.jpg"],
   },
   {
@@ -80,7 +85,10 @@ export const projects: Project[] = [
     technologies: ["AI", "Finance APIs", "React", "Python"],
     roles: ["Full Stack Developer"],
     date: "Coming Soon",
-    links: [],
+    links: [
+      { label: "GitHub Repository", url: "https://github.com/prateek200445/ArthInventory" }
+    ],
+    collaborateUrl: "https://github.com/prateek200445/ArthInventory",
     gallery: ["/projects/inventory.png"],
   },
   {
@@ -102,6 +110,7 @@ export const projects: Project[] = [
     roles: ["Creative Developer", "Full Stack Developer"],
     date: "Coming Soon",
     links: [],
+    collaborateUrl: "/contact",
     gallery: ["/projects/game.png"],
   },
   {
@@ -124,6 +133,7 @@ export const projects: Project[] = [
     roles: ["Full Stack Developer", "Data Scientist"],
     date: "Coming Soon",
     links: [],
+    collaborateUrl: "/contact",
     gallery: ["/projects/veda.png"],
   },
 ];

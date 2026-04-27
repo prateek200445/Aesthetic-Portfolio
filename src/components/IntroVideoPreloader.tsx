@@ -12,7 +12,11 @@ export default function IntroVideoPreloader() {
   const [phase, setPhase] = useState<IntroPhase>("hidden");
 
   useEffect(() => {
-    setPhase("playing");
+    const hasPlayed = sessionStorage.getItem("introPlayed");
+    if (!hasPlayed) {
+      setPhase("playing");
+      sessionStorage.setItem("introPlayed", "true");
+    }
   }, []);
 
   useEffect(() => {
@@ -105,23 +109,34 @@ export default function IntroVideoPreloader() {
   const isExiting = phase === "exiting";
 
   return (
-    <div
-      aria-hidden
-      className="fixed inset-0 z-9999 bg-black transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]"
-      style={{
-        opacity: isExiting ? 0 : 1,
-        transform: isExiting ? "scale(0.92)" : "scale(1)",
-        pointerEvents: isExiting ? "none" : "auto",
-      }}
-    >
-      <video
-        ref={videoRef}
-        className="h-full w-full object-cover"
-        src="/videos/intro-video.mp4"
-        muted
-        playsInline
-        preload="auto"
-      />
-    </div>
+    <>
+      {/* Mobile viewport fix for html/body */}
+      <style>{`
+        html, body { height: 100%; overflow: hidden; }
+      `}</style>
+      <div
+        aria-hidden
+        className="fixed inset-0 z-9999 bg-black transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]"
+        style={{
+          opacity: isExiting ? 0 : 1,
+          transform: isExiting ? "scale(0.92)" : "scale(1)",
+          pointerEvents: isExiting ? "none" : "auto",
+          width: "100vw",
+          height: "100svh",
+        }}
+      >
+        <video
+          ref={videoRef}
+          className="h-full w-full object-contain md:object-cover"
+          style={{
+            display: "block",
+          }}
+          src="/videos/intro-video.mp4"
+          muted
+          playsInline
+          preload="auto"
+        />
+      </div>
+    </>
   );
 }
