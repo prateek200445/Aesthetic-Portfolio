@@ -5,6 +5,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import TabcuraScrollVisual from "@/components/TabcuraScrollVisual";
 import RotatingEarth from "@/components/ui/wireframe-dotted-globe";
+import HlsVideoPlayer from "@/components/ui/HlsVideoPlayer";
 import type { Project } from "@/lib/projectsData";
 
 if (typeof window !== "undefined") {
@@ -177,12 +178,11 @@ export default function AiMcpScrollVisual({ project }: { project: Project }) {
                 border: "1px solid rgba(45,229,240,0.15)"
               }}
             >
-              <video
+              <HlsVideoPlayer
                 ref={brainVideoRef}
                 src="/projects/ai-mcp-brain.mp4"
                 className="h-full w-full object-cover"
                 loop
-                playsInline
                 preload="auto"
                 muted
                 autoPlay

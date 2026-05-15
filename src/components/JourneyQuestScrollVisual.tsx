@@ -4,6 +4,7 @@ import { useEffect, useLayoutEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ContainerScroll } from "@/components/ui/container-scroll-animation";
+import HlsVideoPlayer from "@/components/ui/HlsVideoPlayer";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -350,12 +351,11 @@ export default function JourneyQuestScrollVisual() {
                   "radial-gradient(70% 60% at 55% 48%, rgba(180,100,255,0.22) 0%, rgba(80,40,180,0.08) 40%, transparent 72%)",
               }}
             />
-            <video
+            <HlsVideoPlayer
               ref={firstVideoRef}
               src="/projects/fantasy-journey.mp4"
               className="absolute inset-0 h-full w-full object-cover"
               loop
-              playsInline
               preload="auto"
               autoPlay
               muted
@@ -388,12 +388,11 @@ export default function JourneyQuestScrollVisual() {
           className="absolute inset-0 z-10 overflow-hidden"
           style={{ willChange: "clip-path, transform, opacity" }}
         >
-          <video
+          <HlsVideoPlayer
             ref={zombieVideoRef}
             src="/projects/zomibee_journeyquest.mp4"
             className="h-full w-full object-cover"
             loop
-            playsInline
             preload="auto"
             muted
             style={{ willChange: "transform, filter" }}
@@ -526,12 +525,11 @@ export default function JourneyQuestScrollVisual() {
                   "linear-gradient(to right, transparent 55%, rgba(10,11,15,0.98) 100%), linear-gradient(to top, rgba(10,11,15,0.5) 0%, transparent 25%)",
               }}
             />
-            <video
+            <HlsVideoPlayer
               ref={journeyVideoRef}
               src="/videos/journey.mp4"
               className="h-full w-full object-cover"
               loop
-              playsInline
               preload="auto"
               muted
               autoPlay

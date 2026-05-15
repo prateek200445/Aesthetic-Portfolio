@@ -4,6 +4,7 @@ import { useEffect, useLayoutEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ContainerScroll } from "@/components/ui/container-scroll-animation";
+import HlsVideoPlayer from "@/components/ui/HlsVideoPlayer";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -674,14 +675,11 @@ export default function TabcuraScrollVisual({
                 mixBlendMode: "screen",
               }}
             />
-            <video
+            <HlsVideoPlayer
               ref={videoRef}
               src={videoSrc}
               className="absolute inset-0 h-full w-full object-cover"
               loop
-              playsInline
-              preload="auto"
-              controls
               autoPlay
             />
             {/* Overlay badge */}
@@ -744,14 +742,11 @@ export default function TabcuraScrollVisual({
             }}
           />
           {videoSrc ? (
-            <video
+            <HlsVideoPlayer
               ref={videoRef}
               src={videoSrc}
               className="h-full w-full object-cover"
               loop
-              playsInline
-              preload="auto"
-              controls
               autoPlay
             />
           ) : (

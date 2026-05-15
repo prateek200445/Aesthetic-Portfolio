@@ -5,6 +5,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import TabcuraScrollVisual from "@/components/TabcuraScrollVisual";
+import HlsVideoPlayer from "@/components/ui/HlsVideoPlayer";
 import type { Project } from "@/lib/projectsData";
 
 if (typeof window !== "undefined") {
@@ -407,7 +408,7 @@ export default function VedaScrollVisual({ project }: { project: Project }) {
           className="absolute inset-0 z-10 overflow-hidden"
           style={{ willChange: "clip-path, transform, opacity" }}
         >
-          <video
+          <HlsVideoPlayer
             ref={bookVideoRef}
             src="/projects/veda-book.mp4"
             className="h-full w-full object-cover"
@@ -525,7 +526,7 @@ export default function VedaScrollVisual({ project }: { project: Project }) {
                 border: "1px solid rgba(255,255,255,0.05)"
               }}
             >
-              <video
+              <HlsVideoPlayer
                 ref={bucketVideoRef}
                 src="/projects/veda-bucket.mp4"
                 className="h-full w-full object-cover"
@@ -704,7 +705,7 @@ export default function VedaScrollVisual({ project }: { project: Project }) {
                 background: "#e8f5f0",
               }}
             >
-              <video
+              <HlsVideoPlayer
                 ref={locateVideoRef}
                 src="/projects/locate%20hospital-veda.mp4"
                 className="h-full w-full object-cover"

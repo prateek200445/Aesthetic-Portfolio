@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import HlsVideoPlayer from "@/components/ui/HlsVideoPlayer";
 
 const INTRO_MAX_SECONDS = 4;
 const EXIT_DURATION_MS = 800;
@@ -125,7 +126,7 @@ export default function IntroVideoPreloader() {
           height: "100svh",
         }}
       >
-        <video
+        <HlsVideoPlayer
           ref={videoRef}
           className="h-full w-full object-contain md:object-cover"
           style={{
@@ -133,7 +134,6 @@ export default function IntroVideoPreloader() {
           }}
           src="/videos/intro-video.mp4"
           muted
-          playsInline
           preload="auto"
         />
       </div>

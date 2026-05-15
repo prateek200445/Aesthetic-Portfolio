@@ -4,6 +4,7 @@ import { useLayoutEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import TabcuraScrollVisual from "@/components/TabcuraScrollVisual";
+import HlsVideoPlayer from "@/components/ui/HlsVideoPlayer";
 import type { Project } from "@/lib/projectsData";
 
 if (typeof window !== "undefined") {
@@ -437,11 +438,10 @@ export default function ArthInventoryScrollVisual({ project }: { project: Projec
             className="relative w-full max-w-[640px] aspect-video overflow-hidden rounded-[2.5rem] border border-white/5 shadow-[0_20px_60px_rgba(0,0,0,0.6)] md:w-1/2 bg-[#020405]"
             style={{ willChange: "transform, opacity" }}
           >
-            <video
+            <HlsVideoPlayer
               src="/projects/shopkar-ai-inventory.mp4"
               className="absolute inset-0 h-full w-full object-cover"
               loop
-              playsInline
               preload="auto"
               autoPlay
               muted
@@ -487,12 +487,11 @@ export default function ArthInventoryScrollVisual({ project }: { project: Projec
             className="absolute inset-0 h-full w-full overflow-hidden"
             style={{ willChange: "transform, clip-path, opacity" }}
           >
-            <video
+            <HlsVideoPlayer
               ref={wholesaleVideoRef}
               src="/projects/whole%20sale%20marketplace.mp4"
               className="absolute inset-0 h-full w-full object-cover"
               loop
-              playsInline
               preload="auto"
               autoPlay
               muted

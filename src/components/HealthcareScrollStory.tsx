@@ -5,6 +5,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import { Baloo_2, Nunito } from "next/font/google";
+import HlsVideoPlayer from "@/components/ui/HlsVideoPlayer";
 
 const baloo = Baloo_2({
 	subsets: ["latin"],
@@ -389,13 +390,11 @@ export default function HealthcareScrollStory() {
 					className="absolute inset-0 h-full w-full overflow-hidden"
 					style={{ willChange: "transform, clip-path, opacity" }}
 				>
-					<video
+					<HlsVideoPlayer
 						ref={pharmacistVideoRef}
 						src="/projects/pharmacist%20tabcura.mp4"
 						className="absolute inset-0 h-full w-full object-cover"
 						loop
-						playsInline
-						preload="auto"
 						autoPlay
 						muted
 					/>
@@ -451,12 +450,10 @@ export default function HealthcareScrollStory() {
 							className="relative aspect-[9/16] w-full overflow-hidden rounded-[2.5rem] shadow-2xl border-4 border-black/5"
 							style={{ willChange: "transform, opacity" }}
 						>
-							<video
+							<HlsVideoPlayer
 								src="/projects/tablets.mp4"
 								className="absolute inset-0 h-full w-full object-cover"
 								loop
-								playsInline
-								preload="auto"
 								autoPlay
 								muted
 							/>
@@ -517,12 +514,10 @@ export default function HealthcareScrollStory() {
 							className="relative w-full max-w-[600px] aspect-[16/10] lg:aspect-[4/3] rounded-[24px] overflow-hidden shadow-[0_30px_60px_rgba(0,0,0,0.12)] border border-black/5"
 							style={{ willChange: "transform, opacity" }}
 						>
-							<video
+							<HlsVideoPlayer
 								src="/projects/organise_docs.mp4"
 								className="absolute inset-0 w-full h-full object-cover"
 								loop
-								playsInline
-								preload="auto"
 								autoPlay
 								muted
 							/>
